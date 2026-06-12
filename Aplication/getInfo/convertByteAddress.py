@@ -1,5 +1,5 @@
 import re
-print("convertByteAddress carregado")
+
 def getByteAddress(direct_address):
 
     match = re.match(r"%([A-Z]+)([\d\.]+)", direct_address)
@@ -11,7 +11,7 @@ def getByteAddress(direct_address):
     address = match.group(2)
 
     if area == "MX":
-        return address
+        return int(address.split('.')[0])
 
     address = int(address)
 
@@ -23,9 +23,8 @@ def getByteAddress(direct_address):
         return address * 4
     elif area == "ML":
         return address * 8
-    return None
 
-    
+    return None
     
 
 if __name__ == "__main__":
@@ -34,4 +33,4 @@ if __name__ == "__main__":
     print("%MD100", getByteAddress("%MD100")) # Byte 100, retornar 400
     print("%MW20", getByteAddress("%MW20"))  # Byte 20, retornar 40
     print("%MB30", getByteAddress("%MB30"))  # Byte 30, retornar 30
-    print("%MX10.5", getByteAddress("%MX10.5"))   # Byte 10 bit 5, retornar 10.5
+    print("%MX10.5", getByteAddress("%MX10.5"))   # Byte 10 bit 5, retornar 10

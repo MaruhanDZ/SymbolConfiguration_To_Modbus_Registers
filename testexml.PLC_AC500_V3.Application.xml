@@ -14,7 +14,6 @@
     <TypeSimple name="T_BIT_X_5" size="1" swapsize="0" typeclass="Bit" iecname="BIT" bitoffset="5" />
     <TypeSimple name="T_BIT_X_6" size="1" swapsize="0" typeclass="Bit" iecname="BIT" bitoffset="6" />
     <TypeSimple name="T_BIT_X_7" size="1" swapsize="0" typeclass="Bit" iecname="BIT" bitoffset="7" />
-    <TypeSimple name="T_BOOL" size="1" swapsize="0" typeclass="Bool" iecname="BOOL" />
     <TypeSimple name="T_BYTE" size="1" swapsize="1" typeclass="Byte" iecname="BYTE" />
     <TypeSimple name="T_INT" size="2" swapsize="2" typeclass="Int" iecname="INT" />
     <TypeSimple name="T_REAL" size="4" swapsize="4" typeclass="Real" iecname="REAL" />
@@ -413,19 +412,18 @@
     <TypeArray name="T_ARRAY__0__0__OF_UDT_ANALOG_INPUT" size="240" nativesize="196" typeclass="Array" iecname="ARRAY [0..0] OF UDT_ANALOG_INPUT" basetype="T_UDT_ANALOG_INPUT">
       <ArrayDim minrange="0" maxrange="0" />
     </TypeArray>
-    <TypeArray name="T_ARRAY__0__0__OF_UDT_MOTOR" size="468" nativesize="344" typeclass="Array" iecname="ARRAY [0..0] OF UDT_MOTOR" basetype="T_UDT_MOTOR">
-      <ArrayDim minrange="0" maxrange="0" />
+    <TypeArray name="T_ARRAY__0__1__OF_UDT_MOTOR" size="936" nativesize="688" typeclass="Array" iecname="ARRAY [0..1] OF UDT_MOTOR" basetype="T_UDT_MOTOR">
+      <ArrayDim minrange="0" maxrange="1" />
     </TypeArray>
   </TypeList>
   <NodeList>
     <Node name="Application">
       <Node name="GVL_MOTORES">
-        <Node name="motor" type="T_ARRAY__0__0__OF_UDT_MOTOR" access="ReadWrite" directaddress="%ML0" />
+        <Node name="motor" type="T_ARRAY__0__1__OF_UDT_MOTOR" access="ReadWrite" directaddress="%ML0" />
       </Node>
       <Node name="GVL_QA">
-        <Node name="testeBit" type="T_BIT_X_5" access="ReadWrite" directaddress="%MX100.5" />
+        <Node name="testeBit" type="T_BIT_X_0" access="ReadWrite" directaddress="%MX100.0" />
         <Node name="testeBit2" type="T_BIT_X_6" access="ReadWrite" directaddress="%MX100.6" />
-        <Node name="testeBool" type="T_BOOL" access="ReadWrite" directaddress="%MW2004" />
         <Node name="testeINT" type="T_INT" access="ReadWrite" directaddress="%MW2000" />
         <Node name="testeReal" type="T_REAL" access="ReadWrite" directaddress="%MD2010" />
       </Node>

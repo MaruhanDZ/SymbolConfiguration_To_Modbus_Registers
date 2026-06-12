@@ -12,6 +12,7 @@ def get_xml_root(tree):
     # retorna a raiz da arvore XML
     return tree.getroot()
 
+
 # teste do arquivo
 if __name__ == "__main__":
     xmlfile = "testexml.PLC_AC500_V3.Application.xml"
