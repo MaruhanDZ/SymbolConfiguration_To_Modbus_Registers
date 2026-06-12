@@ -51,7 +51,7 @@ def get_gvls(root):
         for var in gvl:
             atributos = var.attrib.copy()
 
-            atributos["byteaddress"] = getByteAddress(atributos["directaddress"])  # valor inicial
+            atributos["byteaddress"] = getByteAddress(atributos.get('directaddress', '%MW0'))  # valor inicial
 
             result[gvl_name].append(atributos)
 

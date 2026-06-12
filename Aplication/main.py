@@ -1,14 +1,10 @@
-import openXMLFile as openXML
+import openXMLFile as openXML # Importa o arquivo
 from SymbolInformation.getSymbolConfig import get_symbol_config_settings as SymbInfo   
 from SymbolInformation.printTree import get_tree_string
 from getInfo.getApplicationInfo import get_application, get_gvls
 from SymbolInformation.getMapping import getMapping, getXMLtypesInfo
-
 from excelHandler.workbookStyle import configTab, treeTab, createHeader, appendVar, adjustWidth, convertToNumber
-
 from excelHandler.handleWorkbook import getWorkbook
-
-
 
 # obtem o arquivo xml
 path = "testexml.PLC_AC500_V3.Application.xml"
