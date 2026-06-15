@@ -1,8 +1,8 @@
 import openXMLFile as openXML
-from SymbolInformation.getSymbolConfig import get_symbol_config_settings as SymbInfo   
+from SymbolInformation.getSymbolConfig import get_symbol_config_settings as SymbInfo
 from SymbolInformation.printTree import get_tree_string
 from getInfo.getApplicationInfo import get_application, get_gvls
-from SymbolInformation.getMapping import getMapping, getXMLtypesInfo
+from SymbolInformation.getMapping import getMapping, getXMLtypesInfo, verifyUDTs
 from excelHandler.workbookStyle import configTab, treeTab, createHeader, appendVar, adjustWidth, convertToNumber
 from excelHandler.handleWorkbook import getWorkbook
 from gui.mainWindow import MainWindow
@@ -109,6 +109,8 @@ def generateExcelFile():
 
         # obtem as informações que serão utilizadas para gerar 
         getXMLtypesInfo(root, ns)
+    
+        verifyUDTs(window)
 
         # cabiçalho das abas do excel
         headers = ["path", "typeclass", "size", "byteStart", "bitoffset", "register"]

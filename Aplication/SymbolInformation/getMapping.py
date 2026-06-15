@@ -2,6 +2,7 @@ if __name__ == '__main__':
     from getVariableTypes import getArrayTypes, getSimpleTypes, getUDTTypes
 else:
     from SymbolInformation.getVariableTypes import getArrayTypes, getSimpleTypes, getUDTTypes
+    from PySide6.QtWidgets import QMessageBox
 import xml.etree.ElementTree as ET
 
 # cria algumas variaveis globais que serão compartilhadas entre todas as funções
@@ -23,6 +24,27 @@ def getXMLtypesInfo(root, ns):
     # Obtem informações dos UDTs
     typeUDTs = getUDTTypes(root, ns)
 
+
+def verifyUDTs(window):
+    global typeUDTs
+    # {'name': 'T_UDT_MOTOR', 'size': '467', 'nativesize': '344', 'typeclass': 'Userdef', 'pouclass': 'STRUCTURE', 'iecname': 'UDT_MOTOR'} 
+    for udt in typeUDTs: # função que verifica todos os datatypes 
+        print(f'checking {udt.get('iecname')}')
+        if int(udt.get('nativesize')) % 4 != 0:
+
+            QMessageBox.warning(
+            window,
+            "User Defined Type Size",
+            f'User Defined Type "{udt.get("iecname")}" has an incompatible size '
+            f'({udt.get("nativesize")} bytes).\n'
+            'All User Defined Types must have a size that is a multiple of 4 bytes '
+            'to ensure proper memory alignment.\n'
+            'Address mapping for this UDT may be incorrect. Please review the UDT '
+            'definition before using the generated mapping.'
+            )
+
+            print(f'User defined type {udt.get('iecname')} with incompatible size ({udt.get('nativesize')}). Must be multiple of 4 bytes.')
+    
 
 # função recusiva de expansão do tipo de dado, usado para obter a ordem de memória de cada variavel
 def expandType(name, type):
