@@ -94,6 +94,12 @@ def getSequentialMemorySpacing(rows, byteToStart):
             else: # caso a linha anterior não for um bit, calcula utilizando o swapsize
                 row['byteStart'] = (lastRow.get('byteStart', 0) + int(lastRow.get('swapsize', 0)))
         # a partir do byte, retorna o registrador
+
+        # verificar se o byte é multiplo do size, se não for somar até chegar ao proximo valor multiplo
+        if row['typeclass'] != 'STRING': # se não for string, pois a string acaba de acordo com o seu atributo size
+            while (int(row['byteStart']) % int(row['size']) != 0): 
+                row['byteStart'] = row['byteStart'] + 1
+
         row['register'] = int(row.get('byteStart'))//2
 
 

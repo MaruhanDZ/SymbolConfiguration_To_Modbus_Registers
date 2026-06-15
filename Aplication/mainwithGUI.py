@@ -195,5 +195,6 @@ window.btn_generate.clicked.connect(generateExcelFile) # função chamada quando
 
 # mostra a janela
 window.show()
+
 # caso apertar o bot
 sys.exit(app.exec())
