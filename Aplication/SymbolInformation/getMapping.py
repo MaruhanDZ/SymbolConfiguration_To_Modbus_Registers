@@ -85,12 +85,12 @@ def getSequentialMemorySpacing(rows, byteToStart):
                 if row.get('typeclass') == 'BIT':
                     #  verifica se mudou o byte vendo se a sequencia de bit é menor que a anterior
                     if (int(lastRow.get('bitoffset')) >= int(row.get('bitoffset'))):
-                        row['byteStart'] = int(lastRow.get('byteStart')) + 1
+                        row['byteStart'] = (int(lastRow.get('byteStart')) + 1)
                     else: # se não for maior mantem o mesmo byte
                         row['byteStart'] = int(lastRow.get('byteStart'))
                 # se a linha atual não é um bit
                 else:
-                    row['byteStart'] = int(lastRow.get('byteStart', 0)) + 1
+                    row['byteStart'] = (int(lastRow.get('byteStart', 0)) + 1)
             else: # caso a linha anterior não for um bit, calcula utilizando o swapsize
                 row['byteStart'] = (lastRow.get('byteStart', 0) + int(lastRow.get('swapsize', 0)))
         # a partir do byte, retorna o registrador

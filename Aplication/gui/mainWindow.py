@@ -12,6 +12,17 @@ from PySide6.QtWidgets import (
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QIcon
 
+import os
+import sys
+
+
+def resourcePath(path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath('.')
+    return os.path.join(base_path, path)
+
 
 class MainWindow(QWidget):
 
@@ -27,7 +38,7 @@ class MainWindow(QWidget):
     def setup_ui(self):
 
         self.setWindowTitle("XML Mapping Converter")
-        self.setWindowIcon(QIcon("Aplication\gui\icon.ico"))
+        self.setWindowIcon(QIcon(resourcePath("gui/icon.ico")))
         self.resize(1000, 700)
 
         main_layout = QVBoxLayout(self)
