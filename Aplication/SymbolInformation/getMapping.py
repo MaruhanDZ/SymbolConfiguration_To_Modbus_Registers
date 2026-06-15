@@ -92,7 +92,7 @@ def getSequentialMemorySpacing(rows, byteToStart):
     for i, row in enumerate(rows):
 
         # verifica se é do tipo string e puxa o size para o swapsize
-        if (row.get('typeclass') == 'STRING'):
+        if (row.get('typeclass') == 'STRING' or row.get('typeclass') == 'BOOL'):
             row['swapsize'] = int(row.get('size'))
 
         # se está no primeiro elemento
